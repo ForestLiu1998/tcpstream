@@ -25,7 +25,7 @@ void clnt()
     char buffer[40];
     read(sock, buffer, sizeof(buffer)-1);
 
-    cout<<sizeof(buffer)-1<<endl;
+   
    
     printf("Message form server: %s\n", buffer);
 
@@ -73,10 +73,6 @@ void serv()
     (*net_ss) >> recv_s;
   
     cout<<"Message from clnt: "<<recv_s;
-
-    (*net_ss) >> recv_s;
-
-    cout<<recv_s;
     
     //关闭套接字
     close(clnt_sock);
