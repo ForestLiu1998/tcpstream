@@ -1,4 +1,4 @@
-#include "../src/socket_stream.h"
+#include "../net/socket_stream.h"
 #include <thread>
 #include <iostream>
 #include <stdio.h>
@@ -71,7 +71,7 @@ void serv()
     cout<<"ready to recv\n";
     
     (*net_ss) >> recv_s;
-  
+   
     cout<<"Message from clnt: "<<recv_s;
     
     //关闭套接字
