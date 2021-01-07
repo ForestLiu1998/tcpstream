@@ -31,3 +31,4 @@ you must use a pointer and new this obj,otherwise dual free() error will happen,
 - [x] socket_stream class
 - [ ] more test for robustness
 - [ ] timeout detection
+- [ ] thread safe
