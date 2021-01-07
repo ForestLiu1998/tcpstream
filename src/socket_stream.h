@@ -17,8 +17,8 @@ public:
     
 
 protected:
-    ssize_t precv(void *buf,std::size_t len,int flags);
-    ssize_t psend(const void *buf,std::size_t len,int flags);
+    virtual ssize_t precv(void *buf,std::size_t len,int flags);
+    virtual ssize_t psend(const void *buf,std::size_t len,int flags);
     bool established;
 };
 

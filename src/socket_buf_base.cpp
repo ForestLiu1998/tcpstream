@@ -34,8 +34,11 @@ void socket_buf_base::free_buf()
 
 int socket_buf_base::underflow()
 {
+    //std::cout<<"underflow called\n";
     //all input seq read over,read new data from socket recv buffer 
     int ret = precv(eback(),buf_size_,0);
+    //std::cout<<"get "<<ret<<" chars\n";
+    //std::cout<<eback()<<std::endl;
     if(ret>0)
     {
         //read sth from socket recv buffer,reset the input sequence
@@ -45,6 +48,7 @@ int socket_buf_base::underflow()
     else
     {
         //socket recv buffer empty,raise EOF
+        //std::cout<<"EOF!\n";
         return traits_type::eof();
     }
 }
@@ -52,6 +56,7 @@ int socket_buf_base::underflow()
 int socket_buf_base::sync()
 {
     //use sync to move data into socket send buffer
+    //std::cout<<"sync called\n";
     int sent = 0;
     int total = pptr() - pbase();//check how much left waiting in output sequence
     while(sent<total)
@@ -76,6 +81,7 @@ int socket_buf_base::sync()
 int socket_buf_base::overflow(int c)
 {
     //output seq full,send all data,called by sputc
+    //std::cout<<"overflow called\n";
     if(-1 == sync())//send data
     {
         //socket sent buf full,raise EOF

@@ -37,7 +37,9 @@ ssize_t socket_stream::precv(void *buf,std::size_t len,int flags)
 {
     //recv from socket
     if(!established)
-    return -1;
+    {
+        return -1;
+    }
     return recv(socket_fd_,buf,len,flags);
 };
 
