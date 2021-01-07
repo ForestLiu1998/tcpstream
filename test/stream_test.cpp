@@ -53,11 +53,7 @@ void serv()
     net_ss->set_connection(clnt_sock);
     //cout<<"connection established\n";
     (*net_ss)<<"hello world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-    //cout<<"msg_send!\n";
-    //向客户端发送数据
-    //char str[] = "http://c.biancheng.net/socket/";
-    //write(clnt_sock, str, sizeof(str));
-   
+    
     //关闭套接字
     close(clnt_sock);
     close(serv_sock);
