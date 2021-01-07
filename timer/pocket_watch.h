@@ -18,18 +18,21 @@ public:
 
     time_t get_queue_time();
 
-    bool operator()(pocket_watch& x,pocket_watch& y)
+     bool operator <(const pocket_watch &b)const 
     {
-        return x.get_queue_time()>y.get_queue_time();//小的优先级高 ,从小到大排 
+        return queue_time_>b.queue_time_;
     };
+
 
 private:
     time_t next_time_;
     time_t queue_time_;
+    bool   attached_;
     //connection* master_connection_;
 
     std::function<void()> times_up_cb_;
 };
+
 
 
 

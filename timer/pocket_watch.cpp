@@ -3,7 +3,7 @@ using namespace tcpstream;
 
 
 
-pocket_watch::pocket_watch(std::function<void ()> times_up_cb):times_up_cb_(times_up_cb)
+pocket_watch::pocket_watch(std::function<void ()> times_up_cb):times_up_cb_(times_up_cb),attached_(false)
 {
 
 };
@@ -11,7 +11,16 @@ pocket_watch::pocket_watch(std::function<void ()> times_up_cb):times_up_cb_(time
 void pocket_watch::reset(time_t next_time)
 {
     next_time_ = next_time;
-    Timer::getInstance()->set_time(this);
+    if(next_time<=time(NULL))
+    {
+        times_up();
+    }
+    if(!attached_)
+    {
+        queue_time_ = next_time_;
+        attached_ = true;
+    }
+    Timer::getInstance()->set_time(*this);
 };
 
 void pocket_watch::times_up()
@@ -19,8 +28,8 @@ void pocket_watch::times_up()
     time_t now = time(NULL);
     if(next_time_ > now)//do not times up
     {
-        reset(next_time_);
         queue_time_ = next_time_;
+        reset(next_time_);
     }
     else
     {   //times up,use time_up_callback
@@ -37,4 +46,5 @@ time_t pocket_watch::get_next_time()
 time_t pocket_watch::get_queue_time()
 {
     return queue_time_;
-}
+};
+
