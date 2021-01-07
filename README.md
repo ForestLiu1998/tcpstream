@@ -4,7 +4,7 @@ This is a repository which can use "&lt;&lt;" &amp; ">>" to get message from soc
 # HOW TO USE
 you need include the "socket_stream.h"
 
-'''c++
+```c++
 #include "socket_stream.h"
 using namespace tcpstream;
 
@@ -22,4 +22,4 @@ serv_stream->set_connection(clnt_fd);
 //do other works you need
 }
 
-'''
+```
