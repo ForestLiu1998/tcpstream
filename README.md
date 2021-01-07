@@ -8,13 +8,13 @@ you need include the "socket_stream.h"
 ```c++
 #include "socket_stream.h"
 using namespace tcpstream;
-
-void serv()
+#define BUFFER_SIZE 50  
+void foo()
 {
 //do socket works first
 //accept the clnt by socket function
 
-socket_stream *serv_stream = new socket_stream(50);
+socket_stream *serv_stream = new socket_stream(BUFFER_SIZE);
 serv_stream->set_connection(clnt_fd);
 
 (*serv_stream)<<"hello world!\n";
