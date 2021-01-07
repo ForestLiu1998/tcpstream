@@ -1,5 +1,6 @@
 # tcpstream
-This is a repository which can use "&lt;&lt;" &amp; ">>" to get message from socket
+This is a repository which can use "&lt;&lt;" &amp; ">>" to get message from socket,
+and containing some other little tools
 
 # HOW TO USE
 you need include the "socket_stream.h"
