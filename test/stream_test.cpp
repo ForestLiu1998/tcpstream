@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <sstream>
 #include <stdlib.h>
 #include <unistd.h>
 #include <arpa/inet.h>
@@ -23,8 +24,15 @@ void clnt()
     //读取服务器传回的数据
     char buffer[40];
     read(sock, buffer, sizeof(buffer)-1);
+
+    cout<<sizeof(buffer)-1<<endl;
    
     printf("Message form server: %s\n", buffer);
+
+    //发送数据
+    send(sock,buffer,40,0);
+
+    //this_thread::sleep_for(chrono::seconds(5));//睡5s
    
     //关闭套接字
     close(sock);
@@ -33,7 +41,7 @@ void clnt()
 
 void serv()
 {
-    socket_stream *net_ss = new socket_stream(30);
+
     int serv_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     //将套接字和IP、端口绑定
     struct sockaddr_in serv_addr;
@@ -49,10 +57,26 @@ void serv()
     socklen_t clnt_addr_size = sizeof(clnt_addr);
     int clnt_sock = accept(serv_sock, (struct sockaddr*)&clnt_addr, &clnt_addr_size);
     
+
+    socket_stream *net_ss = new socket_stream(30);
     //cout<<"ready to establish conn\n";
     net_ss->set_connection(clnt_sock);
-    //cout<<"connection established\n";
-    (*net_ss)<<"hello world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+    cout<<"connection established\n";
+    (*net_ss)<<"hello_world,my_name_is_byliu!!!!!\n";
+
+
+    
+    string recv_s;
+    recv_s.resize(20);
+    cout<<"ready to recv\n";
+    
+    (*net_ss) >> recv_s;
+  
+    cout<<"Message from clnt: "<<recv_s;
+
+    (*net_ss) >> recv_s;
+
+    cout<<recv_s;
     
     //关闭套接字
     close(clnt_sock);
