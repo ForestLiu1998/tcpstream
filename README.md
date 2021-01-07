@@ -23,5 +23,5 @@ serv_stream->set_connection(clnt_fd);
 }
 
 ```
-[ ]a
-[x]b
+-[ ]a
+-[x]b
