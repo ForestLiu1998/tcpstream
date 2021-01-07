@@ -37,7 +37,7 @@ int main()
     vector<thread> tv;
     cout<<"sys ready!\n";
     
-    tv.push_back(thread(attach_a_timer,5));
+    tv.push_back(thread(attach_a_timer,20));
     tv[0].join();
     tv.push_back(thread(attach_a_timer,7));
     tv[1].join();
