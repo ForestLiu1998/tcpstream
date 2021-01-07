@@ -23,10 +23,10 @@ serv_stream->set_connection(clnt_fd);
 }
 
 ```
-- [x] 整理Markdown手册
-- [ ] 改善项目
-   - [x] 优化首页显示方式
-   - [x] 修复闪退问题
-   - [ ] 修复视频卡顿
-- [ ] A3项目修复
-   - [x] 修复数值错误
+# Warning
+you must use a pointer and new this obj,otherwise dual free() error will happen,idk why,wish some guy could tell me!!!!!
+
+# TODO list
+- [x] socket_stream class
+- [ ] more test for robustness
+- [ ] timeout detection
