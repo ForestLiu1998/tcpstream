@@ -23,5 +23,10 @@ serv_stream->set_connection(clnt_fd);
 }
 
 ```
-- [ ]a
-- [x]b
+- [x] 整理Markdown手册
+- [ ] 改善项目
+   - [x] 优化首页显示方式
+   - [x] 修复闪退问题
+   - [ ] 修复视频卡顿
+- [ ] A3项目修复
+   - [x] 修复数值错误
